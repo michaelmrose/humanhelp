@@ -119,7 +119,9 @@ helpers: [helper]
 - One store has zero to many requests, helpers
 - One helper/request has one Store
 - One helper has zero or more requests
-```
+
+ #+BEGIN_SRC text :load t
+
         +--------------+          +--------------+          +--------------+
         |   Request    |>0-----||-|    Store     |-||-----0<|    Helper    |
         |              |          |              |          |              |
@@ -133,7 +135,8 @@ helpers: [helper]
         +--------------+                                    | available    |
                                                                                                                 | loggedIn     |
                                                                                                                 +--------------+
-```
+#+END_SRC
+ 
 * Restful Routes
 
 ** Customer
