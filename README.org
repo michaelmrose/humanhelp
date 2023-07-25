@@ -1,10 +1,13 @@
 #+title: Humanhelp
 #+subtitle: A less annoying way to find the employees who are hiding from you and make them get you that item that is definitely "in the back" and not still on its way to the store via planes, trains, and cargo ships.
 
+** Pitch
+A stupid simple way for to connect people with helpers in real environments with near zero friction.
+
 ** Value Proposition
 
 *** USERS
-Pull out your phone anywhere use an incredibly simple tool that starts with a singular text where you describe what you want and a button to summon someone. It doesn't make you think at all, download a 1000 complicated apps one for each location, or navigate their complicated interfaces.
+Pull out your phone anywhere use an incredibly simple tool that starts with a singular text input where you describe what you want and a button to summon someone. It doesn't make you think at all, download a 1000 complicated apps one for each location, or navigate their complicated interfaces.
 
 *** COMPANIES
 Ensure people are connected to the correct employee expeditiously so skilled employees can turn prospective sales into happy customers that look forward to doing business with you later without investing in doing the legwork yourself to make this happen or needing to convince each customer to install your app.
@@ -15,7 +18,6 @@ Ensure people are connected to the correct employee expeditiously so skilled emp
 - JavaScript
 - Express
 - MongoDB
-- Socket.io 
 - Google places API specifically nearbysearch https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
   
 ** Progression
@@ -35,6 +37,8 @@ Helpers with the secret code for a location can register to be displayed as a he
 A list of customers sorted by how long they've been waiting (for perceived customer time multiply number of minutes by 2 and add half an hour) color coded based on duration. There will be a button beside each customer needing help to assign yourself to the person. They will be notified you are on there way  alongside your grumpy or smiling face or possibly an icon.
 
 *** FUTURE
+**** Improve user experience/scalability
+Achieved by adding polling or direct connection between service and users with socket.io
 
 **** Helper Team Screen
 
@@ -62,4 +66,72 @@ After hitting done rate the help you got
 -  View people broken down by skills and schedule
 
 ** UI
+
+*** User UI
 [[file:ui/user-flow.png][file:ui/user-flow.png]]
+
+*** Helper UI
+* User Stories
+** Current
+*** Customer
+- As a user I am frustrated when I need an employee to perform a task or provide information and I have to hunt for someone and even when I find them they aren't qualified to provide the kind of help I need. I just want a simple way to get the help I need quickly.
+
+- As a user I would like to know if there are helpers who work at the location I'm at logged into human help.net.
+
+- As a user I would like to know what they do for the company.
+
+- As a user I would like to know if one is coming to help me.
+
+*** Employee
+- As a user I would like to easily find people who need my help.
+- As a user I would like to know what team members are available and with what skills so I can team up with people to complete tasks.
+- As a user I would like to be able to cover my coworkers when they are already engaged so that in turn they will do so same for me.
+** Future
+*** Supervisor
+-  As a user I would like to create a team and control who can join
+- As a user I would like to know if there are customers not being helped so I can task the right person to help them.
+- As a user I would like to know how many people cancel without receiving help, how fast people are helped and how satisfied they are with the help they get.
+* ERD
+** Entities
+
+*** Request
+contents: String
+creation: Date
+locationId: String
+
+*** Helper
+name: String
+googleId: String
+avatar:
+skills:[String]
+role: String
+available: Boolean
+loggedIn: Boolean
+locationId: String
+helping: [request]
+
+*** Store
+locationId: String
+password: String
+helpers: [helper]
+
+** Relationships
+- One store has zero to many requests, helpers
+- One helper/request has one Store
+- One helper has zero or more requests
+
+* Restful Routes
+
+** Customer
+GET http://www.humanhelp.net/locations/:id/requests/new
+POST http://www.humanhelp.net/locations/:id/requests
+
+** Helper
+GET http://www.humanhelp.net/locations/:id/requests
+GET http://www.humanhelp.net/requests/:id/
+GET http://www.humanhelp.net/locations/:id/helpers/new
+POST http://www.humanhelp.net/locations/:id/helpers
+
+** Shared
+GET http://www.humanhelp.net/location/:id/helpers
+PUT http://www.humanhelp.net/requests/:id 
