@@ -60,3 +60,6 @@ After hitting done rate the help you got
 - Assign waiting customers to particular groups/skillsets and see list of people capable of providing help 
 - Assign Helpers to Customers
 -  View people broken down by skills and schedule
+
+** UI
+[[file:ui/user-flow.png][file:ui/user-flow.png]]
