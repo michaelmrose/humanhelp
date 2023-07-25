@@ -119,7 +119,21 @@ helpers: [helper]
 - One store has zero to many requests, helpers
 - One helper/request has one Store
 - One helper has zero or more requests
-
+```
+        +--------------+          +--------------+          +--------------+
+        |   Request    |>0-----||-|    Store     |-||-----0<|    Helper    |
+        |              |          |              |          |              |
+        +--------------+          +--------------+          +--------------+
+        | requestId    |          | locationId   |          | helperId     |
+        | contents     |          | password     |          | name         |
+        | creation     |          +--------------+          | googleId     |
+        | locationId   |                                    | avatar       |
+        | storeId      |>0--------------------------------|0| skills       |
+        | helperId     |                                    | role         |
+        +--------------+                                    | available    |
+                                                                                                                | loggedIn     |
+                                                                                                                +--------------+
+```
 * Restful Routes
 
 ** Customer
