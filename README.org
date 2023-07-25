@@ -4,7 +4,7 @@
 * Value Proposition
 
 ** USERS
-Pull out your phone anywhere and use a tool that starts with a text box and a button, doesn't make you think at all, and get help from a person at that location. Don't worry about app stores or installing 1000 apps for 1000 different stores or the aggravating complexity of navigating 1000 different complicated interface when all you want to do is give them some of your money.
+Pull out your phone anywhere use an incredibly simple tool that starts with a singular text where you describe what you want and a button to summon someone. It doesn't make you think at all, download a 1000 complicated apps one for each location, or navigate their complicated interfaces.
 
 ** COMPANIES
 Ensure people are connected to the correct employee expeditiously so skilled employees can turn prospective sales into happy customers that look forward to doing business with you later without investing in doing the legwork yourself to make this happen or needing to convince each customer to install your app..
@@ -54,7 +54,7 @@ After hitting done rate the help you got
 *** Screens and tools for managers
 
 **** Metrics
-Metric about store and invidiously performance insofar as rating and how long people had to wait broken down by any number of criteria and graphed over time to show trends in individuals/groups/whole team. 
+- Metric about store and invidiously performance insofar as rating and how long people had to wait broken down by any number of criteria and graphed over time to show trends in individuals/groups/whole team. 
 
 **** People
 - Assign waiting customers to particular groups/skillsets and see list of people capable of providing help 
