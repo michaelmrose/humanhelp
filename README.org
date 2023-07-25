@@ -122,19 +122,20 @@ helpers: [helper]
 
  #+BEGIN_SRC text :load t
 
-        +--------------+          +--------------+          +--------------+
-        |   Request    |>0-----||-|    Store     |-||-----0<|    Helper    |
-        |              |          |              |          |              |
-        +--------------+          +--------------+          +--------------+
-        | requestId    |          | locationId   |          | helperId     |
-        | contents     |          | password     |          | name         |
-        | creation     |          +--------------+          | googleId     |
-        | locationId   |                                    | avatar       |
-        | storeId      |>0--------------------------------|0| skills       |
-        | helperId     |                                    | role         |
-        +--------------+                                    | available    |
-                                                                                                                | loggedIn     |
-                                                                                                                +--------------+
+   +--------------+          +--------------+          +--------------+
+   |   Request    |>0-----||-|    Store     |-||-----0<|    Helper    |
+   |              |          |              |          |              |
+   +--------------+          +--------------+          +--------------+
+   | requestId    |          | locationId   |          | helperId     |
+   | contents     |          | password     |          | name         |
+   | creation     |          +--------------+          | googleId     |
+   | locationId   |                                    | avatar       |
+   | storeId      |>0--------------------------------|0| skills       |
+   | helperId     |                                    | role         |
+   +--------------+                                    | available    |
+                                                                                                           | loggedIn     |
+                                                                                                           +--------------+
+
 #+END_SRC
  
 * Restful Routes
