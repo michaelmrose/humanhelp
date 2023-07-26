@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+    text-align: center;
+}
+nav {
+    text-align: right;
+}
+h1 {
+    color: black;
+}
+#initialQuery {
+    height: 15vh;
+    width:  70vw;
+    max-width: 500px;
+}
+#submitInitialQueryButton {
+    background-color:green;
+    color:white;
+    padding: 10px;
+    width: 100px;
+    border-radius: 8px;
+}
