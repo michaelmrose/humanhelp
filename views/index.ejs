@@ -1,14 +1,15 @@
 <%- include('./partials/header') %>
 
-<h1>What Do You Need</h1>
-
-<% if (!user) { %>
-	<p>please login to continue</p>
-<% } else { %>
-	<p>Welcome, <%= user.name %> <%= user.email %></p>
-	<% if (user.avatar) { %>
-		<img src="<%= user.avatar %>" alt="<%= user.name %>'s avatar" />
-	<% } %>
-<% } %>
+<h1>How can we help you?</h1>
+<form>
+<textarea id="initialQuery" 
+maxlength="250" 
+autofocus="true" 
+required="true"
+name="initialQuery"></textarea>
+<p>
+<button type="submit" id="submitInitialQueryButton">Help Me</button>
+</p>
+</form>
 
 <%- include('./partials/footer') %>
