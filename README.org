@@ -2,7 +2,7 @@
 #+subtitle: A less annoying way to find the employees who are hiding from you and make them get you that item that is definitely "in the back" and not still on its way to the store via planes, trains, and cargo ships.
 
 ** Pitch
-A stupid simple way for to connect people with helpers in real environments with near zero friction.
+A stupid simple way for customers and employees to connect in real environments with near zero setup or friction.
 
 ** Value Proposition
 
