@@ -4,6 +4,6 @@ module.exports = {
 
 function index(req, res) {
   res.render("index", {
-    title: "Homepage"
+    title: "Welcome to Humanhelp.net"
   });
 }
