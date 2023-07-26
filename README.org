@@ -134,16 +134,15 @@ requests[requests]
  
 * Restful Routes
 
-** Customer Role
-GET http://www.humanhelp.net/locations/:id/requests/new
-POST http://www.humanhelp.net/locations/:id/requests
-
-** Helper Role
-GET http://www.humanhelp.net/locations/:id/requests
-GET http://www.humanhelp.net/requests/:id/
-POST http://www.humanhelp.net/locations/:id/users
-
-** Shared
-GET http://www.humanhelp.net/location/:id/users
-PUT http://www.humanhelp.net/requests/:id 
-GET http://www.humanhelp.net/locations/:id/users/new
+| METHOD | PATH                       |
+|--------+----------------------------|
+| GET    | locations/:id/requests/new |
+| POST   | locations/:id/requests     |
+| GET    | locations/:id/requests     |
+| GET    | requests/:id               |
+| GET    | locations/:id/users        |
+| PUT    | requests/:id               |
+| GET    | requests/:id               |
+| GET    | users/new                  |
+| POST   | users/:id                  |
+| DELETE | users/id                   |
