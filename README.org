@@ -95,11 +95,15 @@ After hitting done rate the help you got
 ** Entities
 
 *** Request
+id
 contents: String
 creation: Date
 locationId: String
+requester: User
+servicers:  [User]
 
-*** Helper
+*** User
+_id_
 name: String
 googleId: String
 avatar:
@@ -108,48 +112,38 @@ role: String
 available: Boolean
 loggedIn: Boolean
 locationId: String
-helping: [request]
+requestsInitiated: request
+requestsServicing: [request]
 
-*** Store
-locationId: String
-password: String
-helpers: [helper]
+*** Location
+id
+password: String, required to auth as helper role
+users: [user]
+requests[requests]
 
 ** Relationships
-- One store has zero to many requests, helpers
-- One helper/request has one Store
-- One helper has zero or more requests
+- One Location has zero to many requests, Users
+- One user/request has one location
+  
+- One user has zero to many requests initiated, zero or many requests being serviced by them.
+- One request is initiated by one user
+- One request is being serviced by zero to many users
 
- #+BEGIN_SRC text :load t
 
-   +--------------+          +--------------+          +--------------+
-   |   Request    |>0-----||-|    Store     |-||-----0<|    Helper    |
-   |              |          |              |          |              |
-   +--------------+          +--------------+          +--------------+
-   | requestId    |          | locationId   |          | helperId     |
-   | contents     |          | password     |          | name         |
-   | creation     |          +--------------+          | googleId     |
-   | locationId   |                                    | avatar       |
-   | storeId      |>0--------------------------------|0| skills       |
-   | helperId     |                                    | role         |
-   +--------------+                                    | available    |
-                                                                                                           | loggedIn     |
-                                                                                                           +--------------+
-
-#+END_SRC
+[[file:HumanhelpERD.png][file:ui/HumanhelpERD.png]]  
  
 * Restful Routes
 
-** Customer
+** Customer Role
 GET http://www.humanhelp.net/locations/:id/requests/new
 POST http://www.humanhelp.net/locations/:id/requests
 
-** Helper
+** Helper Role
 GET http://www.humanhelp.net/locations/:id/requests
 GET http://www.humanhelp.net/requests/:id/
-GET http://www.humanhelp.net/locations/:id/helpers/new
-POST http://www.humanhelp.net/locations/:id/helpers
+POST http://www.humanhelp.net/locations/:id/users
 
 ** Shared
-GET http://www.humanhelp.net/location/:id/helpers
+GET http://www.humanhelp.net/location/:id/users
 PUT http://www.humanhelp.net/requests/:id 
+GET http://www.humanhelp.net/locations/:id/users/new
