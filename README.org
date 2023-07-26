@@ -139,10 +139,11 @@ requests[requests]
 | GET    | locations/:id/requests/new |
 | POST   | locations/:id/requests     |
 | GET    | locations/:id/requests     |
-| GET    | requests/:id               |
 | GET    | locations/:id/users        |
-| PUT    | requests/:id               |
 | GET    | requests/:id               |
+| PUT    | requests/:id               |
 | GET    | users/new                  |
+| PUT    | users/:id                  |
 | POST   | users/:id                  |
-| DELETE | users/id                   |
+| DELETE | users/:id                  |
+
