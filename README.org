@@ -105,6 +105,7 @@ servicers:  [User]
 *** User
 _id_
 name: String
+email: String
 googleId: String
 avatar:
 skills:[String]
