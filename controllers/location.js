@@ -1,3 +1,4 @@
+const Location = require('../models/location')
 module.exports = {
     index,
     new : newLocation,

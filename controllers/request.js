@@ -1,4 +1,4 @@
-
+const Request = require('../models/request')
 module.exports = {
     index,
     new : newRequest,
