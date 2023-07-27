@@ -1,41 +1,17 @@
 body {
-    background-color: white;
-    text-align: center;
-    box-sizing: border-box;
-
+    max-width: fit-content;
+    margin-left:auto;
+    margin-right: auto;
 }
 nav {
-    text-align: right;
-}
-h1 {
-    color: black;
-}
-#initialQuery {
-    height: 14vh;
-    width:  70vw;
-    font-size: 14px;
-    max-width: 500px;
-    border: none;
-    overflow: hidden;
-    outline: none;
-    
+    margin: 5px
 }
 
-.textPadding {
-    padding: 5vw 2vw 5vw 2vw;
-    border: medium solid blueviolet;
+img {
+    width: 55px;
+    height: 55px;
+    margin-top: -10px
 }
-#submitInitialQueryButton {
-    background-color:green;
-    color:white;
-    padding: 10px;
-    width: 100px;
-    border-radius: 8px;
-}
-input {
-    margin: 20px
-}
-
-.hidden {
-    display: none;
+#slogan {
+    display: inline;
 }
