@@ -54,6 +54,8 @@ router.get('/logout', function(req, res){
 router.put("requests/id", requestController.update)
 // get a particular request
 router.get("/requests/:id", requestController.show)
+    // actually create a request at loction :id
+    router.post("/routes", locationController.create)
 
 //====================================
 // USERS

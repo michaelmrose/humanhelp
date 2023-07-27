@@ -2,7 +2,6 @@ body {
     background-color: white;
     text-align: center;
     box-sizing: border-box;
-    padding-left:  10x;
 
 }
 nav {
@@ -32,4 +31,11 @@ h1 {
     padding: 10px;
     width: 100px;
     border-radius: 8px;
+}
+input {
+    margin: 20px
+}
+
+.hidden {
+    display: none;
 }

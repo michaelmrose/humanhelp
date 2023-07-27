@@ -6,14 +6,15 @@
     <div class="textPadding">
         <textarea id="initialQuery" 
             maxlength="150" 
+            minlength="8"
             autofocus="true" 
             required="true"
             name="initialQuery">
         </textarea>
     </div>
 
-    <label for="locationInput">Select Location</label>
-    <input id=locationInput type="text" list="locationsList"/>
+    <label for="locationInput" class="hidden">Select Location</label>
+    <input id=locationInput type="text"placeholder="select location" list="locationsList" required="true"/>
     <datalist id="locationsList">
             <option value="Narnia Home Depot"></option>
             <option value="Narnia Best Buy"></option>
