@@ -1,6 +1,9 @@
 body {
     background-color: white;
     text-align: center;
+    box-sizing: border-box;
+    padding-left:  10x;
+
 }
 nav {
     text-align: right;
@@ -9,9 +12,19 @@ h1 {
     color: black;
 }
 #initialQuery {
-    height: 15vh;
+    height: 14vh;
     width:  70vw;
+    font-size: 14px;
     max-width: 500px;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    
+}
+
+.textPadding {
+    padding: 5vw 2vw 5vw 2vw;
+    border: medium solid blueviolet;
 }
 #submitInitialQueryButton {
     background-color:green;
