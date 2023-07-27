@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap" rel="stylesheet">  -->
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&family=Ubuntu&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://use.typekit.net/gad8qbh.css">
   <title><%= title %></title>
 </head>
 <body>
-    <image src="images/humanhelplogoSimplePurple.png"></image>
+    <image src="images/humanhelplogoSimpleYellow.png"></image>
     <h1 id="slogan">Human Help Fast</h1>
   <nav>
-    <a href="null">People</a> |
-    <a href="null">Requests</a> |
-    <a href="null">Join Team</a> |
+    <a href="null">People</a>
+    <a href="null">Requests</a>
+    <a href="null">Join Team</a>
     <% if (user) { %>
       <a href="/logout">Logout</a>
     <% } else { %>

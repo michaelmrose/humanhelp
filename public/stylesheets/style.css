@@ -4,7 +4,23 @@ body {
     margin-right: auto;
 }
 nav {
-    margin: 5px
+    margin: 10px;
+}
+
+a {
+    font-family: muli;
+}
+
+input {
+
+    font-family: muli;
+}
+h1 {
+font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+h2 {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 img {
