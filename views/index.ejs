@@ -1,18 +1,24 @@
 <%- include('./partials/header') %>
 
 <h1>How can we help you?</h1>
-<form >
-<div class="textPadding">
-    <textarea id="initialQuery" 
-        maxlength="150" 
-        autofocus="true" 
-        required="true"
-        name="initialQuery">
-    </textarea>
-</div>
-<p>
-<a href="/requests/determineLocation"><button type="button" id="submitInitialQueryButton">Help Me</button></a>
-</p>
+
+<form action="requests" method="POST" >
+    <div class="textPadding">
+        <textarea id="initialQuery" 
+            maxlength="150" 
+            autofocus="true" 
+            required="true"
+            name="initialQuery">
+        </textarea>
+    </div>
+
+    <label for="locationInput">Select Location</label>
+    <input id=locationInput type="text" list="locationsList"/>
+    <datalist id="locationsList">
+            <option value="Narnia Home Depot"></option>
+            <option value="Narnia Best Buy"></option>
+    </datalist>
+<button type="submit" id="submitInitialQueryButton">Help Me</button>
 </form>
 
 <%- include('./partials/footer') %>

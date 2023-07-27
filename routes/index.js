@@ -50,7 +50,6 @@ router.get('/logout', function(req, res){
 //====================================
 // REQUESTS
 //====================================
-router.get("/requests/determineLocation", requestController.determineLocation)
 // update a particular request
 router.put("requests/id", requestController.update)
 // get a particular request
