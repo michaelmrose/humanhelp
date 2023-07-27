@@ -1,14 +1,17 @@
 <%- include('./partials/header') %>
 
 <h1>How can we help you?</h1>
-<form>
-<textarea id="initialQuery" 
-maxlength="250" 
-autofocus="true" 
-required="true"
-name="initialQuery"></textarea>
+<form >
+<div class="textPadding">
+    <textarea id="initialQuery" 
+        maxlength="150" 
+        autofocus="true" 
+        required="true"
+        name="initialQuery">
+    </textarea>
+</div>
 <p>
-<button type="submit" id="submitInitialQueryButton">Help Me</button>
+<a href="/requests/determineLocation"><button type="button" id="submitInitialQueryButton">Help Me</button></a>
 </p>
 </form>
 

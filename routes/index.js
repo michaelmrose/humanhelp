@@ -50,10 +50,11 @@ router.get('/logout', function(req, res){
 //====================================
 // REQUESTS
 //====================================
-// get a particular request
-router.get("/requests/:id", requestController.show)
+router.get("/requests/determineLocation", requestController.determineLocation)
 // update a particular request
 router.put("requests/id", requestController.update)
+// get a particular request
+router.get("/requests/:id", requestController.show)
 
 //====================================
 // USERS
