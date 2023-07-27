@@ -51,11 +51,14 @@ router.get('/logout', function(req, res){
 // REQUESTS
 //====================================
 // update a particular request
+//temporary req route
+router.get('/requests', requestController.index)
+//
 router.put("/requests/:id", requestController.update)
 // get a particular request
 router.get("/requests/:id", requestController.show)
   // actually create a request
-  router.post("/requests", locationController.create)
+  router.post("/requests", requestController.create)
 
 //====================================
 // USERS
