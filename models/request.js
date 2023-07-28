@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const User = require('./user')
+const Location = require('./location')
 
 const requestSchema = new Schema({
     contents: {
@@ -23,6 +24,10 @@ const requestSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         }],
+    location: {type: Schema.Types.ObjectId, 
+    required: true,
+    ref: 'Location'
+}
     
 })
 

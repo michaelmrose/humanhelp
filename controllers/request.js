@@ -1,4 +1,5 @@
 const Request = require('../models/request')
+const Location = require('../models/location')
 
 module.exports = {
     index,
@@ -22,6 +23,7 @@ async function create(req,res){
     let request = {}
     request.contents = req.body.contents
     request.requester = req.user
+    request.location = await Location.findOne({_id: req.body.locationId})
     try {
     const r = await Request.create(request)
     req.user.requestsInitiated.push(r)

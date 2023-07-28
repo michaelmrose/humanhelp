@@ -11,10 +11,12 @@
             name="contents"></textarea>
     </div>
     <label for="locationInput" class="hidden">Select Location</label>
-    <input id=locationInput type="text"placeholder="select location" list="locationsList" required="true"/>
-    <datalist id="locationsList">
-        <option>foo</option>
-    </datalist>
+    <!-- <input id=locationInput type="text"placeholder="select location" list="locationsList" required="true"/> -->
+    <select name="locationId">
+        <%possibleLocations.forEach(e=>{%>
+           <option value="<%=e._id%>"><%=e.name%></option> 
+        <%})%>
+    </select>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
 </form>
 <%} else {%>
