@@ -43,7 +43,7 @@ async function cancel(req,res){
 }
 
 async function complete(req,res){
-    const myRequests =await Request.find({requester: req.user._id, status: active}).populate('requester')
+    const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester')
     myRequests[0].status = 'complete'
     await myRequests[0].save()
     res.redirect("/")

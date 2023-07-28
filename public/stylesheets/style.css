@@ -37,7 +37,9 @@ img {
     width: 55px;
     height: 55px;
     margin-top: -10px
-} #slogan {
+} 
+
+#slogan {
     display: inline;
 }
 
@@ -59,4 +61,20 @@ img {
 
 li {
     list-style-type:   none;
+}
+.activeRequest {
+    background-color:blueviolet;
+    color:white;
+    border-radius: 8px;
+}
+
+.completeRequest {
+    background-color: #3BC49C; 
+    color:white;
+    border-radius: 8px;
+}
+.canceledRequest {
+    background-color:palevioletred;
+    color:white;
+    border-radius: 8px;
 }

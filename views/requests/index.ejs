@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<%requests.forEach(e=>{%>
-    <li> <img class="avatar" src="<%=e.requester.avatar%>""><%=e.requester.name%> <p> <%=e.contents%></p></li>
+<%requests.reverse().forEach(e=>{%>
+    <li class="<%=e.status%>Request"> <img class="avatar" src="<%=e.requester.avatar%>""><%=e.requester.name%> Status: <%=e.status%> <br><%=e.contents%></li>
 <%})%>
 <%- include('../partials/footer') %>

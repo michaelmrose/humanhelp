@@ -27,5 +27,3 @@ const requestSchema = new Schema({
 })
 
 module.exports = mongoose.model('Request', requestSchema);
-
-// this is done as a var to ensure its hoisted, its done after export to avoid circular deps
