@@ -7,7 +7,10 @@ module.exports = {
     delete: deleteUser,
 }
 
-function index(){}
+async function index(req,res){
+    let users = await User.find({})
+    res.render("users/index", {title: "People", users: users})
+}
 
 function newUser(){}
 

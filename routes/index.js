@@ -63,6 +63,7 @@ router.get("/requests/:id", requestController.show)
 //====================================
 // USERS
 //====================================
+router.get("/users", userController.index)
 // get a form used to create a new user at a particular location
 router.get("/users/new", userController.new)
 // create a new user

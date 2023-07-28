@@ -1,5 +1,5 @@
 <%- include('./partials/header') %>
-
+<% if (requests.length === 0){%>
 <h2>How can we help you?</h1>
 
 <form action="requests" method="POST" >
@@ -18,5 +18,23 @@
     </datalist>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
 </form>
-
+<%} else {%>
+<h2>Welcome to Imaginary Mart</h2> 
+<div class="userGrid">
+<%users.forEach(e=>{%>
+    <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+<%})%>
+</div>
+<p><strong>One of the <%=users.length%> helpers will be with you soon.</strong></p>
+<%requests.forEach(e=>{%>
+    <p>
+    <div><%=e.requester.name%> : <%=e.contents%></div>
+</p>
+<%})%>
+<button class="cancelButton">Cancel</button><button>I Got Helped</button>
+<%}%>
 <%- include('./partials/footer') %>

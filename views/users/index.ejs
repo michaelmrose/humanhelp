@@ -1,2 +1,6 @@
 <%- include('../partials/header') %>
+<%users.forEach(e=>{%>
+    <li> <img class="avatar" src="<%=e.avatar%>""> <%=e.name%> </li>
+<%})%>
+
 <%- include('../partials/footer') %>
