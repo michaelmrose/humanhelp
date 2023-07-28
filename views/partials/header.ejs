@@ -14,10 +14,12 @@
     <image src="images/humanhelplogoSimpleYellow.png"></image>
     <h1 id="slogan">Human Help Fast</h1>
   <nav>
+    <% if (user) {%>
     <a href=" /">Help</a>
     <a href="/users">People</a>
     <a href="/requests">Requests</a>
     <a href="null">Join</a>
+    <%}%>
     <% if (user) { %>
       <a href="/logout">Logout</a>
     <% } else { %>
