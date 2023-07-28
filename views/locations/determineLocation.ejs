@@ -1,0 +1,11 @@
+<%- include('./partials/header') %>
+<form action="" Method="GET"></form>
+    <label for="locationInput">Select Location</label>
+    <select name="locationId">
+        <%possibleLocations.forEach(e=>{%>
+           <option value="<%=e._id%>"><%=e.name%></option> 
+        <%})%>
+    </select>
+
+<button type="submit">Continue</button>
+<%- include('./partials/footer') %>
