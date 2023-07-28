@@ -35,6 +35,7 @@
     <div><%=e.requester.name%> : <%=e.contents%></div>
 </p>
 <%})%>
-<button class="cancelButton">Cancel</button><button>I Got Helped</button>
+<form method="POST" action="/requests/<%=id%>/cancel?_method=PUT "><button class="cancelButton">Cancel</button></form>
+<form method="POST" action="/requests/<%=id%>/complete?_method=PUT "><button >Got Helped</button></form>
 <%}%>
 <%- include('./partials/footer') %>

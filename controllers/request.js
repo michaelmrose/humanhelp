@@ -6,10 +6,11 @@ module.exports = {
     create,
     show,
     update,
+    complete,
+    cancel,
 }
 
 async function index(req,res){
-    console.log('hit index')
     const allRequests = await Request.find({}).populate('requester')
     res.render('requests/index', {title: "All Requests", requests: allRequests})
 }
@@ -33,3 +34,17 @@ async function create(req,res){
 function show(){}
 
 function update(){}
+
+async function cancel(req,res){
+    const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester')
+    myRequests[0].status = 'canceled'
+    await myRequests[0].save()
+    res.redirect("/")
+}
+
+async function complete(req,res){
+    const myRequests =await Request.find({requester: req.user._id, status: active}).populate('requester')
+    myRequests[0].status = 'complete'
+    await myRequests[0].save()
+    res.redirect("/")
+}

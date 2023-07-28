@@ -53,8 +53,9 @@ router.get('/logout', function(req, res){
 // update a particular request
 //temporary req route
 router.get('/requests', requestController.index)
-//
-router.put("/requests/:id", requestController.update)
+//cancel or complete requests
+router.put("/requests/:id/cancel", requestController.cancel)
+router.put("/requests/:id/complete", requestController.complete)
 // get a particular request
 router.get("/requests/:id", requestController.show)
   // actually create a request
