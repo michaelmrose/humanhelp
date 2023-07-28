@@ -3,10 +3,7 @@ const Location = require('../models/location')
 
 module.exports = {
     index,
-    new : newRequest,
     create,
-    show,
-    update,
     complete,
     cancel,
 }
@@ -17,7 +14,6 @@ async function index(req,res){
 }
 
 
-function newRequest(){}
 
 async function create(req,res){
     let request = {}
@@ -33,9 +29,6 @@ async function create(req,res){
     res.redirect("/")
 }
 
-function show(){}
-
-function update(){}
 
 async function cancel(req,res){
     const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester')

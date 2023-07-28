@@ -38,14 +38,6 @@ router.get('/logout', function(req, res){
 //====================================
 // LOCATIONS
 //====================================
-    // form to create a new request at location :id
-    router.get("/locations/:id/requests/new", locationController.new)
-    // actually create a request at loction :id
-    router.post("/locations/:id/requests", locationController.create)
-    // get requests at location id
-    router.get("locations/:id/requests",requestController.index)
-    // get users at location :id
-    router.get("/locations/:id/users", userController.index)
 
 //====================================
 // REQUESTS
@@ -56,8 +48,6 @@ router.get('/requests', requestController.index)
 //cancel or complete requests
 router.put("/requests/:id/cancel", requestController.cancel)
 router.put("/requests/:id/complete", requestController.complete)
-// get a particular request
-router.get("/requests/:id", requestController.show)
   // actually create a request
   router.post("/requests", requestController.create)
 
@@ -65,14 +55,6 @@ router.get("/requests/:id", requestController.show)
 // USERS
 //====================================
 router.get("/users", userController.index)
-// get a form used to create a new user at a particular location
-router.get("/users/new", userController.new)
-// create a new user
-router.post("/users/:id", userController.create)
-// update a user
-router.put("/users/:id", userController.update)
-// delete a user
-router.delete("/users/:id", userController.delete)
 //====================================
 
 
