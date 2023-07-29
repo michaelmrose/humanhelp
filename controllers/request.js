@@ -10,7 +10,7 @@ module.exports = {
 
 async function index(req,res){
     location = await Location.findOne({_id: req.body.locationId})
-    const allRequests = await Request.find({location: location}).populate('requester')
+    const allRequests = await Request.find({}).populate('requester')
     res.render('requests/index', {title: "All Requests", requests: allRequests})
 }
 
