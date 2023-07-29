@@ -1,7 +1,6 @@
 <%- include('./partials/header') %>
 <% if (requests.length === 0){%>
 <h2>How can we help you?</h1>
-
 <form action="requests" method="POST" >
     <div class="textPadding">
         <textarea id="initialQuery" 
@@ -10,14 +9,14 @@
             placeholder="You must enter at least 8 characters"
             name="contents"></textarea>
     </div>
-    <label for="locationInput" class="hidden">Select Location</label>
-    <select name="locationId">
+    <label for="locationSelect" class="hidden">Select Location</label>
+    <select name="locationId"id=locationSelect>
         <%possibleLocations.forEach(e=>{%>
            <option value="<%=e._id%>"><%=e.name%></option> 
         <%})%>
     </select>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
-<button class="employeeLoginButton" formaction="" type="submit" id="submitInitialQueryButton">Employee Login</button>
+<button class="stealthButton" formaction="" type="submit" id="submitInitialQueryButton">Employee Login</button>
 
 </form>
 <%} else {%>
