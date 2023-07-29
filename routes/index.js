@@ -39,6 +39,7 @@ router.get('/logout', function(req, res){
 //====================================
 // LOCATIONS
 //====================================
+router.get('/locations',ensureLoggedIn, locationController.index)
 
 //====================================
 // REQUESTS
@@ -56,6 +57,8 @@ router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
 // USERS
 //====================================
 router.get("/users", ensureLoggedIn, userController.index)
+router.get("/auth/store")
+router.post("/auth/store")
 //====================================
 
 

@@ -38,4 +38,8 @@
 <form method="POST" action="/requests/<%=id%>/cancel?_method=PUT "><button class="cancelButton">Cancel</button></form>
 <form method="POST" action="/requests/<%=id%>/complete?_method=PUT "><button >Got Helped</button></form>
 <%}%>
+
+<% if (user){%>
+<button class="stealthButton" formaction="" type="submit" id="submitInitialQueryButton">Employee Login</button>
+<%}%>
 <%- include('./partials/footer') %>
