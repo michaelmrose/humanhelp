@@ -7,17 +7,18 @@
         <textarea id="initialQuery" 
             maxlength="150" 
             autofocus="true" 
-            required="true"
+            placeholder="You must enter at least 8 characters"
             name="contents"></textarea>
     </div>
     <label for="locationInput" class="hidden">Select Location</label>
-    <!-- <input id=locationInput type="text"placeholder="select location" list="locationsList" required="true"/> -->
     <select name="locationId">
         <%possibleLocations.forEach(e=>{%>
            <option value="<%=e._id%>"><%=e.name%></option> 
         <%})%>
     </select>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
+<button class="employeeLoginButton" formaction="" type="submit" id="submitInitialQueryButton">Employee Login</button>
+
 </form>
 <%} else {%>
 <h2>Welcome to Imaginary Mart</h2> 

@@ -12,13 +12,12 @@
 </head>
 <body>
     <image src="images/humanhelplogoSimpleYellow.png"></image>
-    <h1 id="slogan">Human Help Fast</h1>
+    <h1 id="slogan">Human Help Fast</h1><% if (user) %> <img class=avatar src="<%= user.avatar %>">
   <nav>
     <% if (user) {%>
     <a href=" /">Help</a>
     <a href="/users">People</a>
     <a href="/requests">Requests</a>
-    <a href="null">Join</a>
     <%}%>
     <% if (user) { %>
       <a href="/logout">Logout</a>
