@@ -10,6 +10,7 @@ const locatationSchema = new Schema({
         minlength: [8, "Passwords must be at least 8 characters"],
         maxlength: [160, "Passwords cannot be any longer than 160 characters"],
     },
+    activeAuthorizedUsers: [{type: Schema.Types.ObjectId, ref: 'User'}],
     authorizedUsers: [{type: Schema.Types.ObjectId, ref: 'User'}],
     requests: [{type: Schema.Types.ObjectId, ref: 'Request'}],
 })

@@ -9,12 +9,6 @@
             placeholder="You must enter at least 8 characters"
             name="contents"></textarea>
     </div>
-    <label for="locationSelect" class="hidden">Select Location</label>
-    <select name="locationId"id=locationSelect>
-        <%possibleLocations.forEach(e=>{%>
-           <option value="<%=e._id%>"><%=e.name%></option> 
-        <%})%>
-    </select>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
 
 </form>

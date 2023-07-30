@@ -8,7 +8,7 @@ const userController = require('../controllers/user');
 const ensureLoggedIn = require('../config/ensureLoggedIn')
 const ensureLocated = require('../config/ensureLocated')
 
-router.get('/', indexRouter.index);
+router.get('/',  ensureLocated, indexRouter.index);
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -40,7 +40,7 @@ router.get('/logout', function(req, res){
 //====================================
 // LOCATIONS
 //====================================
-router.get('/locations',ensureLoggedIn, locationController.index)
+router.get('/locations', locationController.index)
 
 //====================================
 // REQUESTS
@@ -58,8 +58,8 @@ router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
 // USERS
 //====================================
 router.get("/users", ensureLocated, ensureLoggedIn, userController.index)
-router.get("/auth/store")
-router.post("/auth/store")
+router.get("/locations/login", ensureLoggedIn,ensureLocated , locationController.login)
+router.post("/locations/login", ensureLoggedIn, ensureLocated, locationController.login)
 //====================================
 
 
