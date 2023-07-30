@@ -9,9 +9,13 @@ module.exports = {
 }
 
 async function index(req,res){
-    location = await Location.findOne({_id: req.body.locationId})
+    location = await Location.findOne({_id: req.cookies.locationId})
+    let authorizedUser = false;
+    if (location.authorizedUsers.includes(req.user._id))
+      authorizedUser = true
+    let role = req.user.role
     const allRequests = await Request.find({}).populate('requester')
-    res.render('requests/index', {title: "All Requests", requests: allRequests})
+    res.render('requests/index', {title: "All Requests", requests: allRequests, authorizedUser: authorizedUser, role:role})
 }
 
 

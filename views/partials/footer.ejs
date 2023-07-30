@@ -1,7 +1,11 @@
 
 <% if (user){%>
 <form method="GET" action="/locations/login">
-<button class="stealthButton"  type="submit">Employee Login</button>
+    <%if (authorizedUser){%>
+        Logged in as <%=role%><br><a href="/locations/logout">Employee Logout</a>
+    <%} else {%>
+<a href="/locations/login">Employee Login</a>
+    <%}%>
 </form>
 <%}%>
 </main>
