@@ -11,8 +11,8 @@
   <title><%= title %></title>
 </head>
 <body>
-    <image src="images/humanhelplogoSimpleYellow.png"></image>
-    <h1 id="slogan">Human Help Fast</h1><% if (user) {%> <img class=avatar src="<%= user.avatar %>"><%}%>
+    <div id="top"> <image id="logo" src="images/humanhelplogoSimpleYellow.png"></image>
+    <h1 id="slogan">Human Help Fast</h1><% if (user) {%> <img class=avatar src="<%= user.avatar %>"><%}%></div>
   <nav>
     <% if (user) {%>
     <a href=" /">Help</a>

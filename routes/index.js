@@ -6,6 +6,7 @@ const locationController = require('../controllers/location');
 const requestController = require('../controllers/request');
 const userController = require('../controllers/user');
 const ensureLoggedIn = require('../config/ensureLoggedIn')
+const ensureLocated = require('../config/ensureLocated')
 
 router.get('/', indexRouter.index);
 
@@ -46,7 +47,7 @@ router.get('/locations',ensureLoggedIn, locationController.index)
 //====================================
 // update a particular request
 //temporary req route
-router.get('/requests', ensureLoggedIn, requestController.index)
+router.get('/requests',ensureLocated, ensureLoggedIn, requestController.index)
 //cancel or complete requests
 router.put("/requests/:id/cancel", ensureLoggedIn, requestController.cancel)
 router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
@@ -56,7 +57,7 @@ router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
 //====================================
 // USERS
 //====================================
-router.get("/users", ensureLoggedIn, userController.index)
+router.get("/users", ensureLocated, ensureLoggedIn, userController.index)
 router.get("/auth/store")
 router.post("/auth/store")
 //====================================

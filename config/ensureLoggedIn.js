@@ -1,5 +1,5 @@
 // credit attributed to mongoose-movies repo
 module.exports = (req,res,next)=>{
     if (req.isAuthenticated()) return next()
-    res.redirect('auth/google?target=' + req.url )
+    res.redirect('auth/google'+ '?qtarget='+ req.url )
 }

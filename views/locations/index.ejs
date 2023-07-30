@@ -1,14 +1,13 @@
 <%- include('../partials/header') %>
 
-<%=url%>
-<form action="" method="POST" >
+<form action="<%=target%>" method="<%=method%>" >
     <label for="locationSelect" class="hidden">Select Location</label>
     <select name="locationId"id=locationSelect>
         <%possibleLocations.forEach(e=>{%>
            <option value="<%=e._id%>"><%=e.name%></option> 
         <%})%>
     </select>
-<button type="submit" id="submitInitialQueryButton">Continue</button>
+<button type="submit" >Continue</button>
 
 </form>
 <%- include('../partials/footer') %>

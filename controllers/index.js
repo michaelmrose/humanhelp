@@ -8,6 +8,7 @@ const Location = require('../models/location')
 async function index(req, res) {
   const possibleLocations = await Location.find({})
   if (req.user){
+    // we have to herein invalidate the cookie locationId if user is not at location any longer
     const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester')
     const peopleHere = await  User.find({})
   res.render("index", {

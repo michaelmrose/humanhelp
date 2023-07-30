@@ -4,5 +4,5 @@ module.exports = {
 }
 async function index(req,res){
   const possibleLocations = await Location.find({})
-  res.render("locations/index", {title: "locations",possibleLocations: possibleLocations, url: req.url})
+  res.render("locations/index", {title: "locations",possibleLocations: possibleLocations, target: req.query.target, method: req.query.method})
 }
