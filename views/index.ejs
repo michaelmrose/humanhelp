@@ -1,5 +1,8 @@
 <%- include('./partials/header') %>
 <% if (requests.length === 0){%>
+ <%   if (user) {%>
+<h1><%=locationName%></h1>
+<h3><a href="/locations?target=/">Change Location</a></h3>
 <h2>How can we help you?</h1>
 <form action="requests" method="POST" >
     <div class="textPadding">
@@ -10,10 +13,12 @@
             name="contents"></textarea>
     </div>
 <button type="submit" id="submitInitialQueryButton">Help Me</button>
-
 </form>
+<%}else{ %>
+    <h1><a href="/auth/google">Login to Continue</a></h1>
+<%}%>
 <%} else {%>
-<h2>Welcome to Imaginary Mart</h2> 
+<h2>Welcome to <%=locationName%></h2>
 <div class="userGrid">
 <%users.forEach(e=>{%>
     <div class="userEntry"><img src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
