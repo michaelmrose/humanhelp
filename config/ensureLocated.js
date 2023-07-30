@@ -6,5 +6,6 @@ module.exports = (req,res,next)=>{
         return next()
     }
     else {
-    res.redirect('/locations' + "?target=" + req.url + "?method=" +req.originalMethod)}
+    res.redirect('/locations' + "?target=" + req.url + "?method=" +req.originalMethod)
+}
 }
