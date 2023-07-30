@@ -59,7 +59,7 @@ router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
 //====================================
 router.get("/users", ensureLocated, ensureLoggedIn, userController.index)
 router.get("/locations/login", ensureLoggedIn,ensureLocated , locationController.login)
-router.post("/locations/login", ensureLoggedIn, ensureLocated, locationController.login)
+router.get("/locations/logout", ensureLoggedIn, ensureLocated, locationController.logout)
 //====================================
 
 

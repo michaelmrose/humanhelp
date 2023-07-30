@@ -13,14 +13,16 @@ async function login(req,res){
   console.log(req.cookies.locationId)
   const location = await Location.findOne({_id:req.cookies.locationId})
   location.authorizedUsers.push(res.locals.user)
-  location.activeAuthorizedUsers.push(res.locals.user)
   await location.save()
   res.redirect("/")
 }
 
 async function logout(req,res){
-  const location = await Location.find({_id:req.cookies.locationId}).populate('authorizedUsers').populate('activeAuthorizedUsers').populate('authorizedUsers')
+  const location = await Location.findOne({_id:req.cookies.locationId})
+  console.log(location)
+  console.log(location.authorizedUsers)
   location.authorizedUsers = []
   location.activeAuthorizedUsers = []
   await location.save()
+  res.redirect("/")
 }

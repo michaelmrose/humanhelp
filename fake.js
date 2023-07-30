@@ -8,7 +8,7 @@ db.on('connected', async function() {
   console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
 await Location.deleteMany({})
 await Location.create({
-    name: "Narnia Home Depot",
+    name: "Narnia: Home Depot",
     password: "beetleguise",
     authorizedUsers: [],
     requests: [],
