@@ -11,7 +11,7 @@
   <title><%= title %></title>
 </head>
 <body>
-    <div id="top"> <image id="logo" src="images/humanhelplogoSimpleYellow.png"></image>
+    <div id="top"> <a href="/"><image id="logo" src="images/humanhelplogoSimpleYellow.png"></image></a>
     <h1 id="slogan">Human Help Fast</h1><% if (user) {%> <img class=avatar referrerpolicy="no-referrer" src="<%= user.avatar %>"><%}%></div>
   <nav>
     <% if (user) {%>
@@ -26,3 +26,6 @@
     <% } %>
   </nav>
   <main>
+<%if (typeof locationName !== 'undefined'){%>
+<h2><%=locationName%><a href="/locations?target=/"> change</a></h1>
+  <%}%>

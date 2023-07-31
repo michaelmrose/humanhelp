@@ -7,6 +7,7 @@ module.exports = {
     complete,
     cancel,
     take,
+    drop,
     delete:deleteRequest,
 }
 
@@ -18,7 +19,7 @@ async function index(req,res){
     let role = req.user.role
     let allRequests
     if (authorizedUser)
-        allRequests = await Request.find({location: location}).populate('requester').populate('location').sort({status: 'desc'})
+        allRequests = await Request.find({location: location}).populate('servicers').populate('requester').populate('location').sort({status: 'desc'})
     else
         allRequests = await Request.find({requester: req.user}).populate('requester').populate('location')
     res.render('requests/index', {title: "All Requests", requests: allRequests, authorizedUser: authorizedUser, role:role, locationName: location.name})
@@ -32,8 +33,19 @@ async function authorizedHere(req){
 }
 
 async function take(req,res){
-
+    let request = await Request.findOne({_id: req.params.id})
+    request.servicers.push(req.user)
+    await request.save()
+    res.redirect("/requests")
 }
+
+async function drop(req,res){
+    let request = await Request.findOne({_id: req.params.id}).populate('servicers')
+    request.servicers = request.servicers.filter(e=>e._id===req.user.id)
+    await request.save()
+    res.redirect("/requests")
+}
+
 async function create(req,res){
     let request = {}
     request.contents = req.body.contents

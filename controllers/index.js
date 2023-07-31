@@ -7,7 +7,7 @@ const Location = require('../models/location')
 async function index(req, res) {
   if (req.user){
     const location = await Location.findOne({_id: req.cookies.locationId})
-    const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester')
+    const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester').populate('servicers')
     const peopleHere = await  User.find({location: location, role: "employee"})
     let authorizedUser = false;
     if (location.authorizedUsers.includes(req.user._id))
@@ -26,7 +26,7 @@ async function index(req, res) {
   } else {
       res.render("index", {
       title: "Humanhelp",
-      locationName : '.',
+      locationName : undefined,
       requests: [],
       users: [],
     authorizedUser: false,

@@ -1,5 +1,4 @@
 <%- include('../partials/header') %>
-<h2>Welcome to <%=locationName%></h2>
 <%users.forEach(e=>{%>
     <li> <img class="avatar" src="<%=e.avatar%>""> <%=e.name%> <%=e.role%></li>
 <%})%>

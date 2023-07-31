@@ -8,7 +8,7 @@ async function index(req,res){
   const possibleLocations = await Location.find({})
   res.render("locations/index", {
     authorizedUser: true,
-    role:'banana',
+    role:'',
     title: "locations",
     possibleLocations: possibleLocations, 
     target: req.query.target,
