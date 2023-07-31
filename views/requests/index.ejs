@@ -15,7 +15,11 @@
         Status:<%=e.status%>
         <%if (authorizedUser && e.status === 'active'){%>
         <br>
-        <button class="opsButton opsButtonCancel">Cancel</button><button class="opsButton opsButtonComplete">Complete</button><button class="opsButton opsButtonDelete">Delete</button>
+        <form>
+        <button formmethod="POST" formaction="/requests/<%=e._id%>/cancel?_method=PUT" class="opsButton opsButtonCancel">Cancel</button>
+        <button formmethod="POST" formaction="/requests/<%=e._id%>/complete?_method=PUT" class="opsButton opsButtonComplete">Complete</button>
+        <button formmethod="POST" formaction="/requests/<%=e._id%>/delete?_method=DELETE" class="opsButton opsButtonDelete">Delete</button>
+        </form>
         <%}%>
     </li>
 <%})%>

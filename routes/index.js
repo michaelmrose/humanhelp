@@ -48,9 +48,10 @@ router.get('/locations', locationController.index)
 // update a particular request
 //temporary req route
 router.get('/requests',ensureLocated, ensureLoggedIn, requestController.index)
-//cancel or complete requests
+//cancel or complete requests this needs logic to protect it from people not logged in at the store as well as not logged in
 router.put("/requests/:id/cancel", ensureLoggedIn, requestController.cancel)
 router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
+router.delete("/requests/:id/delete", ensureLoggedIn, requestController.delete)
   // actually create a request
   router.post("/requests", ensureLoggedIn, requestController.create)
 
