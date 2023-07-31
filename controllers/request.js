@@ -6,6 +6,7 @@ module.exports = {
     create,
     complete,
     cancel,
+    take,
     delete:deleteRequest,
 }
 
@@ -30,7 +31,9 @@ async function authorizedHere(req){
     return authorizedUser
 }
 
+async function take(req,res){
 
+}
 async function create(req,res){
     let request = {}
     request.contents = req.body.contents

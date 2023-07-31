@@ -52,6 +52,7 @@ router.get('/requests',ensureLocated, ensureLoggedIn, requestController.index)
 router.put("/requests/:id/cancel", ensureLoggedIn, requestController.cancel)
 router.put("/requests/:id/complete", ensureLoggedIn, requestController.complete)
 router.delete("/requests/:id/delete", ensureLoggedIn, requestController.delete)
+router.put("/requests/:id/take", ensureLoggedIn, requestController.take)
   // actually create a request
   router.post("/requests", ensureLoggedIn, requestController.create)
 

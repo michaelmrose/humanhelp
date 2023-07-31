@@ -11,14 +11,13 @@
         <%}%>
         <br>
         <%=e.contents%> 
-        <br>
-        Status:<%=e.status%>
+       <div>Status:<%=e.status%></div>
         <%if (authorizedUser && e.status === 'active'){%>
-        <br>
-        <form>
+        <form class="opsButtonForm">
         <button formmethod="POST" formaction="/requests/<%=e._id%>/cancel?_method=PUT" class="opsButton opsButtonCancel">Cancel</button>
         <button formmethod="POST" formaction="/requests/<%=e._id%>/complete?_method=PUT" class="opsButton opsButtonComplete">Complete</button>
         <button formmethod="POST" formaction="/requests/<%=e._id%>/delete?_method=DELETE" class="opsButton opsButtonDelete">Delete</button>
+        <button formmethod="POST" formaction="/requests/<%=e._id%>/take?_method=PUT" class="opsButton opsButtonService">Take</button>
         </form>
         <%}%>
     </li>

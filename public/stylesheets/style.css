@@ -103,10 +103,16 @@ li {
 }
 .opsButton {
     display: inline;
-    width: 100px; 
+    width: 110px; 
     font-size: 14px;
     background-color: black ;
     margin: 10px 10px 10px  10px
+}
+.opsButtonForm{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .opsButtonCancel {
     background-color: black;
@@ -116,7 +122,15 @@ li {
     background-color: black;
     color: green
 }
+.opsButtonService {
+    background-color: black;
+    color: blueviolet
+}
 .opsButtonDelete {
     background-color: black;
     color: white
+}
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
