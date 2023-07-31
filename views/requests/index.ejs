@@ -1,5 +1,22 @@
 <%- include('../partials/header') %>
+<h2>Welcome to <%=locationName%></h2>
 <%requests.reverse().forEach(e=>{%>
-    <li class="<%=e.status%>Request"> <img referrerpolicy="no-referrer" class="avatar" src="<%=e.requester.avatar%>""><%=e.requester.name%> Status: <%=e.status%> <br><%=e.contents%></li>
+    <li class="<%=e.status%>Request"> 
+        <img referrerpolicy="no-referrer" 
+        class="avatar"
+         src="<%=e.requester.avatar%>"
+        <%=e.requester.name%> 
+        <%if (e.location){%>
+        Location: <%=e.location.name%> 
+        <%}%>
+        <br>
+        <%=e.contents%> 
+        <br>
+        Status:<%=e.status%>
+        <%if (authorizedUser && e.status === 'active'){%>
+        <br>
+        <button class="opsButton opsButtonCancel">Cancel</button><button class="opsButton opsButtonComplete">Complete</button><button class="opsButton opsButtonDelete">Delete</button>
+        <%}%>
+    </li>
 <%})%>
 <%- include('../partials/footer') %>

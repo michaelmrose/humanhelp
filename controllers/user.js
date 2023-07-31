@@ -10,6 +10,10 @@ async function index(req,res){
     if (location.authorizedUsers.includes(req.user._id))
       authorizedUser = true
     let role = req.user.role
-    let users = await User.find({})
-    res.render("users/index", {title: "People", users: users, authorizedUser, role})
+    let user
+    if (authorizedUser)
+        users = await User.find({location: location})
+    else
+        users = await User.find({location: location, role: "employee"})
+    res.render("users/index", {title: "People", users: users, authorizedUser, role, locationName: location.name})
 }

@@ -101,3 +101,22 @@ li {
     justify-content:space-between;
     margin: 10px;
 }
+.opsButton {
+    display: inline;
+    width: 100px; 
+    font-size: 14px;
+    background-color: black ;
+    margin: 10px 10px 10px  10px
+}
+.opsButtonCancel {
+    background-color: black;
+    color: red
+}
+.opsButtonComplete {
+    background-color: black;
+    color: green
+}
+.opsButtonDelete {
+    background-color: black;
+    color: white
+}

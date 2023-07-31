@@ -28,7 +28,15 @@
     <div class="userEntry"><img referrerpolicy="no-referrer"src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
 <%})%>
 </div>
+<% if (users.length === 0){%>
+    <p>Sadly No Helpers are Available at this Location</p>
+<%}%>
+<% if (users.length === 1){%>
+    <p>Eventually the one and only helper at this location will be with you.</p>
+<%}%>
+<% if (users.length > 1){%>
 <p><strong>One of the <%=users.length%> helpers will be with you soon.</strong></p>
+<%}%>
 <%requests.forEach(e=>{%>
     <p>
     <div><%=e.requester.name%> : <%=e.contents%></div>

@@ -14,8 +14,12 @@ async function index(req,res){
     if (location.authorizedUsers.includes(req.user._id))
       authorizedUser = true
     let role = req.user.role
-    const allRequests = await Request.find({}).populate('requester')
-    res.render('requests/index', {title: "All Requests", requests: allRequests, authorizedUser: authorizedUser, role:role})
+    let allRequests
+    if (authorizedUser)
+        allRequests = await Request.find({location: location}).populate('requester').populate('location').sort({status: 'desc'})
+    else
+        allRequests = await Request.find({requester: req.user}).populate('requester').populate('location')
+    res.render('requests/index', {title: "All Requests", requests: allRequests, authorizedUser: authorizedUser, role:role, locationName: location.name})
 }
 
 
