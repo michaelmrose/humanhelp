@@ -6,6 +6,7 @@ const User = require('../models/user')
 const Location = require('../models/location')
 async function index(req, res) {
   if (req.user){
+    try {
     const location = await Location.findOne({_id: req.cookies.locationId})
     const myRequests =await Request.find({requester: req.user._id, status: 'active'}).populate('requester').populate('servicers')
     const peopleHere = await  User.find({location: location, role: "employee"})
@@ -14,6 +15,7 @@ async function index(req, res) {
       authorizedUser = true
     req.user.location = location
     await req.user.save()
+    } catch(e){}
   res.render("index", {
     title: "Humanhelp",
     requests: myRequests,
