@@ -11,12 +11,12 @@ module.exports = (req, res, next) => {
 
 function redirectToTarget(req, res) {
     const targetUrl = req.query.target ? req.query.target : '/';
-    const methodQueryParam = `?method=${encodeURIComponent(req.method)}`;
+    const methodQueryParam = `?method=${req.method}`;
     res.redirect(targetUrl + methodQueryParam);
 }
 
 function redirectToLocations(req, res) {
     const targetUrl = '/locations';
-    const queryParams = `?target=${encodeURIComponent(req.originalUrl)}&method=${encodeURIComponent(req.method)}`;
+    const queryParams = `?target=${req.originalUrl}&method=${req.method}`;
     res.redirect(targetUrl + queryParams);
 }
