@@ -12,13 +12,16 @@ module.exports = {
 }
 
 async function index(req,res){
-    try{
     location = await Location.findOne({_id: req.cookies.locationId})
-    if (await authorizedHere())
+    let authorizedUser = false;
+    if (location.authorizedUsers.includes(req.user._id))
+      authorizedUser = true
+    let role = req.user.role
+    let allRequests
+    if (authorizedUser)
         allRequests = await Request.find({location: location}).populate('servicers').populate('requester').populate('location').sort({status: 'desc'})
     else
         allRequests = await Request.find({requester: req.user}).populate('requester').populate('location')
-    }catch(e){}
     res.render('requests/index', {title: "All Requests", requests: allRequests, authorizedUser: authorizedUser, role:role, locationName: location.name})
 }
 async function authorizedHere(req){
@@ -31,7 +34,6 @@ async function authorizedHere(req){
 
 async function take(req,res){
     // only users authorized at the location can take/drop/delete
-    try {
     if (await authorizedHere(req)){
     let request = await Request.findOne({_id: req.params.id})
     request.servicers.push(req.user)
@@ -39,19 +41,16 @@ async function take(req,res){
     res.redirect("/requests")
     }
     else res.redirect("/")
-}catch(e){res.redirect("/")}
 }
 
 async function drop(req,res){
     // only users authorized at the location can take/drop/delete
-    try {
     if (await authorizedHere(req)){
     let request = await Request.findOne({_id: req.params.id}).populate('servicers')
     request.servicers = request.servicers.filter(e=>e._id===req.user.id)
     await request.save()
     res.redirect("/requests")
     } else res.redirect("/")
-    }catch(e){res.redirect("/")}
 }
 
 async function create(req,res){
@@ -69,46 +68,40 @@ async function create(req,res){
 }
 
 async function deleteRequest(req,res){
-    try {
     // only users authorized at the location can take/drop/delete
     if (await authorizedHere(req)){
-        await Request.deleteOne({_id:req.params.id})
-        if(authorizedHere(req))
-            res.redirect("/requests")
-        else
-            res.redirect("/")
-        } else res.redirect("/")
-    }catch(e){res.redirect("/")}
+    await Request.deleteOne({_id:req.params.id})
+    if(authorizedHere(req))
+        res.redirect("/requests")
+    else
+        res.redirect("/")
+    } else res.redirect("/")
 }
 
 async function cancel(req,res){
     // only creator of request OR authorized user at this location can cancel or complete a request
-    try {
-        const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+    const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
 
-        if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
-            myRequest.status = 'canceled'
-            await myRequest.save()
-            if(authorizedHere(req))
-                res.redirect("/requests")
-            else
-                res.redirect("/")
-            } else res.redirect("/")
-        }catch(e){res.redirect("/")}
+    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
+    myRequest.status = 'canceled'
+    await myRequest.save()
+    if(authorizedHere(req))
+        res.redirect("/requests")
+    else
+        res.redirect("/")
+    } else res.redirect("/")
 }
 
 async function complete(req,res){
     // only creator of request OR authorized user at this location can cancel or complete a request
-    try {
-        const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+    const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
 
-        if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
-            myRequest.status = 'complete'
-            await myRequest.save()
-        if(authorizedHere(req))
-            res.redirect("/requests")
-        else
-            res.redirect("/")
-        } else res.redirect("/")
-    }catch(e){res.redirect("/")}
+    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
+    myRequest.status = 'complete'
+    await myRequest.save()
+    if(authorizedHere(req))
+        res.redirect("/requests")
+    else
+        res.redirect("/")
+    } else res.redirect("/")
 }

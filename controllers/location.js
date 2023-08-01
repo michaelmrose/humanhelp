@@ -5,9 +5,7 @@ module.exports = {
     logout,
 }
 async function index(req,res){
-  try{
   const possibleLocations = await Location.find({})
-  }catch(e){}
   res.render("locations/index", {
     authorizedUser: true,
     role:'',
@@ -18,23 +16,20 @@ async function index(req,res){
 }
 
 async function login(req,res){
-  try {
+  console.log(req.cookies.locationId)
   const location = await Location.findOne({_id:req.cookies.locationId})
   location.authorizedUsers.push(res.locals.user)
   res.locals.user.role = "employee"
   await res.locals.user.save()
   await location.save()
-  }catch(e){}
   res.redirect("/")
 }
 
 async function logout(req,res){
-  try {
   const location = await Location.findOne({_id:req.cookies.locationId})
   location.authorizedUsers = []
   await location.save()
   res.locals.user.role = "customer"
   await res.locals.user.save()
-  }catch(e){}
   res.redirect("/")
 }
