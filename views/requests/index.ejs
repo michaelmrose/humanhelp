@@ -1,36 +1,31 @@
 <%- include('../partials/header') %>
-<%requests.reverse().forEach(e=>{%>
-    <li class="<%=e.status%>Request"> 
-        <img referrerpolicy="no-referrer" 
-        class="avatar"
-         src="<%=e.requester.avatar%>"
-        <%=e.requester.name%> 
-        <%if (e.location){%>
-        Location: <%=e.location.name%> 
-        <%}%>
+<% requests.reverse().forEach(request => { %>
+    <li class="<%= request.status %>Request">
+        <img referrerpolicy="no-referrer" class="avatar" src="<%= request.requester.avatar %>">
+        <%= request.requester.name %>
+        <% if (request.location) { %>
+            Location: <%= request.location.name %>
+        <% } %>
         <br>
-        <%=e.contents%> 
-       <div>Status:<%=e.status%></div>
-        <%if (authorizedUser && e.status === 'active'){%>
-        <form class="opsButtonForm">
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/drop?_method=PUT" class="opsButton opsButtonService">Drop</button>
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/cancel?_method=PUT" class="opsButton opsButtonCancel">Cancel</button>
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/complete?_method=PUT" class="opsButton opsButtonComplete">Complete</button>
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/delete?_method=DELETE" class="opsButton opsButtonDelete">Delete</button>
-        <%if (e.servicers.map(servicer=>servicer._id).includes(user._id)){%>
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/drop?_method=PUT" class="opsButton opsButtonService">Drop</button>
-        <%} else {%>
-        <button formmethod="POST" formaction="/requests/<%=e._id%>/take?_method=PUT" class="opsButton opsButtonService">Take</button>
-        <%}%>
-
-
-        </form>
-        <textarea class="chat"></textarea>
-        Working this request:
-        <%e.servicers.forEach(s=>{%>
-            <%=s.name%>
-        <%})%>
-        <%}%>
+        <%= request.contents %>
+        <div>Status: <%= request.status %></div>
+        <% if (authorizedUser && request.status === 'active') { %>
+            <form class="opsButtonForm">
+                <button formmethod="POST" formaction="/requests/<%= request._id %>/cancel?_method=PUT" class="opsButton opsButtonCancel">Cancel</button>
+                <button formmethod="POST" formaction="/requests/<%= request._id %>/complete?_method=PUT" class="opsButton opsButtonComplete">Complete</button>
+                <button formmethod="POST" formaction="/requests/<%= request._id %>/delete?_method=DELETE" class="opsButton opsButtonDelete">Delete</button>
+                <% if (request.servicers.map(servicer => servicer._id.toString()).includes(user._id.toString())) { %>
+                    <button formmethod="POST" formaction="/requests/<%= request._id %>/drop?_method=PUT" class="opsButton opsButtonService">Drop</button>
+                <% } else { %>
+                    <button formmethod="POST" formaction="/requests/<%= request._id %>/take?_method=PUT" class="opsButton opsButtonService">Take</button>
+                <% } %>
+            </form>
+            <textarea class="chat"></textarea>
+            Working this request:
+            <% request.servicers.forEach(servicer => { %>
+                <%= servicer.name %>
+            <% }) %>
+        <% } %>
     </li>
-<%})%>
+<% }) %>
 <%- include('../partials/footer') %>

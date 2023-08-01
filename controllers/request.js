@@ -33,17 +33,24 @@ async function authorizedHere(req){
 }
 
 async function take(req,res){
+    // only users authorized at the location can take/drop/delete
+    if (await authorizedHere(req)){
     let request = await Request.findOne({_id: req.params.id})
     request.servicers.push(req.user)
     await request.save()
     res.redirect("/requests")
+    }
+    else res.redirect("/")
 }
 
 async function drop(req,res){
+    // only users authorized at the location can take/drop/delete
+    if (await authorizedHere(req)){
     let request = await Request.findOne({_id: req.params.id}).populate('servicers')
     request.servicers = request.servicers.filter(e=>e._id===req.user.id)
     await request.save()
     res.redirect("/requests")
+    } else res.redirect("/")
 }
 
 async function create(req,res){
@@ -61,29 +68,38 @@ async function create(req,res){
 }
 
 async function deleteRequest(req,res){
+    // only users authorized at the location can take/drop/delete
+    if (await authorizedHere(req)){
     await Request.deleteOne({_id:req.params.id})
     if(authorizedHere(req))
         res.redirect("/requests")
     else
         res.redirect("/")
+    } else res.redirect("/")
 }
 
 async function cancel(req,res){
-    const myRequests =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
-    myRequests.status = 'canceled'
-    await myRequests.save()
+    // only creator of request OR authorized user at this location can cancel or complete a request
+    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
+    const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+    myRequest.status = 'canceled'
+    await myRequest.save()
     if(authorizedHere(req))
         res.redirect("/requests")
     else
         res.redirect("/")
+    } else res.redirect("/")
 }
 
 async function complete(req,res){
-    const myRequests =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
-    myRequests.status = 'complete'
-    await myRequests.save()
+    // only creator of request OR authorized user at this location can cancel or complete a request
+    const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
+    myRequest.status = 'complete'
+    await myRequest.save()
     if(authorizedHere(req))
         res.redirect("/requests")
     else
         res.redirect("/")
+    } else res.redirect("/")
 }

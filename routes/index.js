@@ -46,7 +46,6 @@ router.get('/locations', locationController.index)
 // REQUESTS
 //====================================
 // update a particular request
-//temporary req route
 router.get('/requests',ensureLocated, ensureLoggedIn, requestController.index)
 //cancel or complete requests this needs logic to protect it from people not logged in at the store as well as not logged in
 router.put("/requests/:id/cancel", ensureLoggedIn, requestController.cancel)
