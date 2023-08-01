@@ -18,7 +18,7 @@ Ensure people are connected to the correct employee expeditiously so skilled emp
 - JavaScript
 - Express
 - MongoDB
-- Google places API specifically nearbysearch https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+- Google places API specifically nearbysearch (in the future) https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
   
 ** Progression
 
@@ -28,19 +28,25 @@ Ensure people are connected to the correct employee expeditiously so skilled emp
 A Screen where customers enter a query, click help, and are taken to a hopefully short list of locations in the world, this is necessarily not going to be limited to locations supported by the app as we would obviously want to show the user that there isn't supported help here so revert to their normal employee hunting strategies.
 
 **** User Help Screen
-A list of zero or more helpers with icons and first names will be shown along with a message that they will be helped soon.  There will also be 2 buttons. A thumbs up for kudos or a big red nasty cancel button for when you couldn't possibly wait 10 more seconds even though you spent 2 hours walking here uphill...in the snow, through razor wire. When a helper has selected you their face will be visually indicated and you will be told so and so will be with you soon.
+A list of zero or more helpers with icons and first names will be shown along with a message that they will be helped soon.  There will also be 2 buttons. A complete button to acknowledge the request was completed(can also be marked as such by the helper or a big red nasty cancel button for when you couldn't possibly wait 10 more seconds even though you spent 2 hours walking here uphill...in the snow, through razor wire. When a helper has selected you their face will be visually indicated and you will be told so and so will be with you soon.
 
-**** Helper Registration Screen
-Helpers with the secret code for a location can register to be displayed as a helper along with the picture from their google oauth sign-in.
+**** Helper Registration Screen 
+Helpers with the secret code for a location can register to be displayed as a helper along with the picture from their google oauth sign-in. This is essentially mocked out with login as a helper automatic for testing purposes.
 
 **** Helper Customers Screen
 A list of customers sorted by how long they've been waiting (for perceived customer time multiply number of minutes by 2 and add half an hour) color coded based on duration. There will be a button beside each customer needing help to assign yourself to the person. They will be notified you are on there way  alongside your grumpy or smiling face or possibly an icon.
 
 *** FUTURE
+**** Proper registration screens
+
+**** Pull locations from Google Places api
+
+**** Configurable display names in place of real names
+
+**** Proper real time updates to status and messages
+
 **** Improve user experience/scalability
 Achieved by adding polling or direct connection between service and users with socket.io
-
-**** Helper Team Screen
 
 **** Helper Store Registration Screen
 
