@@ -16,6 +16,21 @@
     <h1><a href="/auth/google">Login to Continue</a></h1>
 <%}%>
 <%} else {%>
+<%requests.forEach(e=>{%>
+    <p>
+    <div><%=e.requester.name%> : <%=e.contents%></div>
+</p>
+<% if (e.servicers.length > 0){ %>
+    <%e.servicers.forEach(e=>{%>
+        <img class="avatar" src="<%=e.avatar%>"></image><strong>  <%=e.name%>
+   <% })%>
+        has taken your request. </strong>
+        <textarea class="chat" readonly="true"></textarea>
+        <input  type="text" placeholder="send a message" class="messageInput"><button class="sendButton">Send</button>
+<%} else if (users.length===0){%>
+    <p>Sadly No Helpers are Available at this Location</p>
+<%} else if (users.length === 1){%>
+    <p>Eventually the one and only helper at this location will be with you.</p>
 <div class="userGrid">
 <%users.forEach(e=>{%>
     <div class="userEntry"><img referrerpolicy="no-referrer" src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
@@ -26,25 +41,21 @@
 <%})%>
 
 </div>
-<%requests.forEach(e=>{%>
-    <p>
-    <div><%=e.requester.name%> : <%=e.contents%></div>
-</p>
-<% if (e.servicers.length > 0){ %>
-    <%e.servicers.forEach(e=>{%>
-        <img class="avatar" src="<%=e.avatar%>"></image><strong>  <%=e.name%>
-   <% })%>
-        has taken your request. </strong>
-        <textarea class="chat"></textarea>
-<%} else if (users.length===0){%>
-    <p>Sadly No Helpers are Available at this Location</p>
-<%} else if (users.length === 1){%>
-    <p>Eventually the one and only helper at this location will be with you.</p>
 <%} else if (users.length > 1) {%>
 <p><strong>One of the <%=users.length%> helpers will be with you soon.</strong></p>
+<div class="userGrid">
+<%users.forEach(e=>{%>
+    <div class="userEntry"><img referrerpolicy="no-referrer" src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img referrerpolicy="no-referrer"src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img referrerpolicy="no-referrer"src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img referrerpolicy="no-referrer"src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+    <div class="userEntry"><img referrerpolicy="no-referrer"src="<%=e.avatar%>" class="avatar"><p><%=e.name%></p></div>
+<%})%>
+
+</div>
 <%}%>
 <form method="POST" action="/requests/<%=id%>/cancel?_method=PUT "><button class="cancelButton">Cancel</button></form>
-<form method="POST" action="/requests/<%=id%>/complete?_method=PUT "><button >Got Helped</button></form>
+<form method="POST" action="/requests/<%=id%>/complete?_method=PUT "><button  class="completeButton">Got Helped</button></form>
 <%})%>
 <%}%>
 
