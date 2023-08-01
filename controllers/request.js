@@ -80,8 +80,9 @@ async function deleteRequest(req,res){
 
 async function cancel(req,res){
     // only creator of request OR authorized user at this location can cancel or complete a request
-    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
     const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+
+    if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
     myRequest.status = 'canceled'
     await myRequest.save()
     if(authorizedHere(req))
@@ -94,6 +95,7 @@ async function cancel(req,res){
 async function complete(req,res){
     // only creator of request OR authorized user at this location can cancel or complete a request
     const myRequest =await Request.findOne({_id: req.params.id, status: 'active'}).populate('requester')
+
     if (await authorizedHere(req) || myRequest.requester._id.toString() === req.user._id.toString()){
     myRequest.status = 'complete'
     await myRequest.save()
