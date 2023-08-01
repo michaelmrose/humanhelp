@@ -20,7 +20,8 @@
                     <button formmethod="POST" formaction="/requests/<%= request._id %>/take?_method=PUT" class="opsButton opsButtonService">Take</button>
                 <% } %>
             </form>
-            <textarea class="chat"></textarea>
+            <textarea class="chat" readonly="true"></textarea>
+        <input  type="text" placeholder="send a message" class="messageInput"><button class="sendButton">Send</button>
             Working this request:
             <% request.servicers.forEach(servicer => { %>
                 <%= servicer.name %>
