@@ -66,11 +66,12 @@ After hitting done rate the help you got
 -  View people broken down by skills and schedule
 
 ** UI
-
 *** User UI
-[[file:ui/user-flow.png][file:ui/user-flow.png]]
+[[file:ui/humanhelp-user-flow.jpg][file:ui/humanhelp-user-flow.jpg]]
 
 *** Helper UI
+[[file:ui/humanhelp-user-flow.jpg][file:ui/humanhelp-helper-flow.jpg]]
+
 * User Stories
 ** Current
 *** Customer
