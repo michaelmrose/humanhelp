@@ -1,0 +1,34 @@
+#+title: Humanhelp To Do
+** DONE Create Skeleton of Project
+ SCHEDULED: <2023-07-25 Tue>
+** DONE Create complete Mongoose Data Model
+SCHEDULED: <2023-07-26 Wed>
+** DONE Create Stubs of all Controller Functions
+ SCHEDULED: <2023-07-25 Tue>
+** DONE Create Navigation
+SCHEDULED: <2023-07-25 Tue>
+** DONE Create Routes
+SCHEDULED: <2023-07-26 Wed>
+** DONE Create EJS partials and blank EJS files for major screens
+SCHEDULED: <2023-07-26 Wed>
+** DONE Fill out controller functions
+SCHEDULED: <2023-07-27 Thu>
+** DONE Work up usable UI in EJS
+SCHEDULED: <2023-07-28 Fri>
+** DONE implement location
+SCHEDULED: <2023-07-27 Thu>
+** DONE implement location based auth
+SCHEDULED: <2023-07-28 Fri>
+** DONE implement role based UI
+SCHEDULED: <2023-07-28 Fri>
+* DONE Enable helper to add themselves to the request
+** DONE Deploy on Heroku/Fly
+SCHEDULED: <2023-07-31 Mon>
+** DONE Ensure SSL works
+SCHEDULED: <2023-07-31 Mon>
+** DONE Bind domain to Heroku/Fly Deployment
+SCHEDULED: <2023-07-31 Mon>
+** TODO Write Presentation and rehearse
+SCHEDULED: <2023-07-31 Mon>
+** TODO Present
+SCHEDULED: <2023-08-01 Tue>>
