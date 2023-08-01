@@ -1,16 +1,3 @@
-// credit attributed to mongoose-movies repo
-// module.exports = (req,res,next)=>{
-//     if (req.query.locationId || req.cookies.locationId) {
-//         if (req.query.locationId)
-//         res.cookie('locationId', req.query.locationId)
-//         return next()
-//     }
-//     else {
-//     res.redirect('/locations' + "?target=" + req.url + "?method=" +req.originalMethod)
-// }
-// }
-const { URL } = require('url');
-
 module.exports = (req, res, next) => {
     if (req.query.locationId) {
         res.cookie('locationId', req.query.locationId);
@@ -23,14 +10,13 @@ module.exports = (req, res, next) => {
 };
 
 function redirectToTarget(req, res) {
-    const targetUrl = new URL(req.query.target || '/', req.protocol + '://' + req.get('host'));
-    targetUrl.searchParams.append('method', req.method);
-    res.redirect(targetUrl.toString());
+    const targetUrl = req.query.target ? req.query.target : '/';
+    const methodQueryParam = `?method=${encodeURIComponent(req.method)}`;
+    res.redirect(targetUrl + methodQueryParam);
 }
 
 function redirectToLocations(req, res) {
-    const targetUrl = new URL('/locations', req.protocol + '://' + req.get('host'));
-    targetUrl.searchParams.append('target', req.originalUrl);
-    targetUrl.searchParams.append('method', req.method);
-    res.redirect(targetUrl.toString());
+    const targetUrl = '/locations';
+    const queryParams = `?target=${encodeURIComponent(req.originalUrl)}&method=${encodeURIComponent(req.method)}`;
+    res.redirect(targetUrl + queryParams);
 }
